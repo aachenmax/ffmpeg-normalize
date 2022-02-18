@@ -362,6 +362,10 @@ class MediaFile:
                     f"Moving temporary file from {temp_file_name} to {self.output_file}"
                 )
                 shutil.move(temp_file_name, self.output_file)
+
+            output = cmd_runner.get_output()
+            logger.debug("Ffmpeg second pass output:")
+            logger.debug(output)
         except Exception as e:
             # remove dangling temporary file
             if os.path.isfile(temp_file_name):
